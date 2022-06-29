@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include "Object.h"
+
 namespace Forradica
 {
 
@@ -7,6 +10,7 @@ namespace Forradica
         {
         public:
                 int groundType = 0;
+                std::vector<Object> objects;
         };
 
 

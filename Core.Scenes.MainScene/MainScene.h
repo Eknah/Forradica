@@ -16,7 +16,6 @@ namespace Forradica
                 void DoMouseDownDerived(Uint8 button) override;
                 void DoMouseUpDerived(Uint8 button) override;
 
-
         };
 
 }

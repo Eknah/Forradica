@@ -1,6 +1,7 @@
 #include "Tools.h"
 #include "Core/SDL.h"
 #include "Convenience/Cast.h"
+#include "Configuration/Configuration.h"
 
 namespace Forradica
 {
@@ -34,6 +35,17 @@ namespace Forradica
                 FPoint result = {Cast::ToFloat(x)/canvasSize.width, Cast::ToFloat(y)/canvasSize.height};
 
                 return result;
+        }
+
+        FSize Tools::GetTileSize()
+        {
+                auto aspectRatio = GetAspectRatio();
+                auto columnsCount = Configuration::columnsCount;
+
+                float tileFWidth = 1.0f/columnsCount;
+                float tileFHeight = tileFWidth*aspectRatio;
+
+                return {tileFWidth, tileFHeight};
         }
 
 }

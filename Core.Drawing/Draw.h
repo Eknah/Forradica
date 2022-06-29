@@ -14,7 +14,6 @@ namespace Forradica
                 SDL_Rect GetRenderBounds(int imageNameHash, float x, float y, float width);
                 void StringCenter(std::string text, float x, float y, Uint8 red, Uint8 green, Uint8 blue);
                 void Rectangle(float x, float y, float width, float height, Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha = uint8Max);
-
-                float textScaling = 1.0f;
+                void FilledRectangle(float x, float y, float width, float height, Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha = uint8Max);
         }
 }

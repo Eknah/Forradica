@@ -7,13 +7,14 @@
 #include "Convenience/GetHash.h"
 #include "Convenience/Tools.h"
 #include "Convenience.Development/Development.h"
+#include "Configuration/Configuration.h"
 
 namespace Forradica
 {
-        void ImageResources::LoadImages(std::string imageResourcesPath, std::string imageNameExtension)
+        void ImageResources::LoadImages()
         {
                 DevOut("Creating image resources loading path");
-                auto filePath = std::string().append(SDL_GetBasePath()).append(imageResourcesPath);
+                auto filePath = std::string().append(SDL_GetBasePath()).append(Configuration::imageResourcesPath);
                 std::filesystem::recursive_directory_iterator entries = decltype(entries) {filePath.c_str()};
 
                 DevOut("Iterating through all images in path");
@@ -26,7 +27,7 @@ namespace Forradica
                         auto name = fullName.substr(0, fullName.find("."));
 
                         DevOut("Check if file is directory or has incorrect file extension, then go to next image");
-                        if (file.is_directory() || imageNameExtension != Tools::Right(fullName, imageNameExtension.length())) continue;
+                        if (file.is_directory() || Configuration::imageNameExtension != Tools::Right(fullName, Configuration::imageNameExtension.length())) continue;
 
                         DevOut("Creating image surface");
                         std::unique_ptr<SDL_Surface, SDLDeleter> surface = {IMG_Load(file.path().string().c_str()), SDLDeleter()};

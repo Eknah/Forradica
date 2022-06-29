@@ -14,7 +14,7 @@
 namespace Forradica
 {
 
-        void Game::Start(Configuration configuration)
+        void Game::Start()
         {
                 DevOut("Seeding RNG with srand");
                 srand(time(nullptr));
@@ -26,22 +26,19 @@ namespace Forradica
                 SceneManager::Initialize();
 
                 DevOut("Loading images");
-                ImageResources::LoadImages(configuration.imageResourcesPath, configuration.imageNameExtension);
+                ImageResources::LoadImages();
 
                 DevOut("Initializing TTF");
                 FontResources::InitializeTTF();
 
                 DevOut("Loading fonts");
-                FontResources::LoadFonts(configuration.defaultFontResourcePath);
-
-                DevOut("Initializing drawing operations");
-                Draw::Initialize(configuration.textScaling);
+                FontResources::LoadFonts();
 
                 DevOut("Initializing custom cursor");
-                CustomCursor::Initialize(configuration.cursorSize);
+                CustomCursor::Initialize();
 
                 DevOut("Loading gameplay data");
-                Data::LoadData(configuration.columnsCount, configuration.mapSize);
+                Data::LoadData();
 
                 DevOut("Generating map for currentMapArea");
                 MapGeneration::GenerateMap(Data::currentMapArea);

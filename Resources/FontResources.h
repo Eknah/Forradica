@@ -11,7 +11,7 @@ namespace Forradica
         namespace FontResources
         {
                 void InitializeTTF();
-                void LoadFonts(std::string defaultFontResourcePath);
+                void LoadFonts();
 
                 inline std::unique_ptr<TTF_Font, SDLDeleter> defaultFont = nullptr;
         };

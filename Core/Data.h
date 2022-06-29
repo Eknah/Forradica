@@ -8,9 +8,8 @@ namespace Forradica
 {
         namespace Data
         {
-                void LoadData(int _columnsCount, int _mapSize);
+                void LoadData();
 
-                inline int columnsCount = 0;
                 inline std::unique_ptr<MapArea> currentMapArea = nullptr;
                 inline std::unique_ptr<Actor> player = nullptr;
         };

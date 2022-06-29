@@ -8,11 +8,10 @@ namespace Forradica
 
         namespace CustomCursor
         {
-                void Initialize(float _cursorSize);
+                void Initialize();
                 void Reset();
                 void Render();
 
-                inline float cursorSize = 0.0f;
                 inline CursorTypes currentCursorType = CursorTypes::Default;
         };
 

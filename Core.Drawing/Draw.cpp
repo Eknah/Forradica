@@ -5,14 +5,10 @@
 #include "Resources/FontResources.h"
 #include "Convenience/Cast.h"
 #include "Convenience.Development/Development.h"
+#include "Configuration/Configuration.h"
 
 namespace Forradica
 {
-        void Draw::Initialize(float _textScaling)
-        {
-                DevOut("Setting textScaling value from configuration");
-                textScaling = _textScaling;
-        }
 
         void Draw::Image(int imageNameHash, float x, float y, float width, float height, bool centerAlign)
         {
@@ -69,6 +65,7 @@ namespace Forradica
                 auto image = std::unique_ptr<SDL_Texture, SDLDeleter>((SDL_CreateTextureFromSurface(SDL::renderer.get(), surface.get())), SDLDeleter());
 
                 SDL_Rect rectangle;
+                auto textScaling = Configuration::textScaling;
 
                 rectangle.x = xI;
                 rectangle.y = yI;
@@ -91,5 +88,17 @@ namespace Forradica
                 SDL_Rect rectangle = {xI, yI, widthI, heightI};
                 SDL_SetRenderDrawColor(SDL::renderer.get(), red, green, blue, alpha);
                 SDL_RenderDrawRect(SDL::renderer.get(), &rectangle);
+        }
+
+        void Draw::FilledRectangle(float x, float y, float width, float height, Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha)
+        {
+                auto canvasSize = Tools::GetCanvasSize();
+                int xI = Cast::ToInt(x*canvasSize.width);
+                int yI = Cast::ToInt(y*canvasSize.height);
+                int widthI = Cast::ToInt(width*canvasSize.width);
+                int heightI = Cast::ToInt(height*canvasSize.height);
+                SDL_Rect rectangle = {xI, yI, widthI, heightI};
+                SDL_SetRenderDrawColor(SDL::renderer.get(), red, green, blue, alpha);
+                SDL_RenderFillRect(SDL::renderer.get(), &rectangle);
         }
 }

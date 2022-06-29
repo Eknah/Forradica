@@ -4,14 +4,11 @@
 
 int wmain()
 {
-        Forradica::DevOut("Creating configuration object");
-        Forradica::Configuration configuration;
-
         Forradica::DevOut("Setting default configuration values");
-        configuration.UseDefaultConfigurationValues();
+        Forradica::Configuration::UseDefaultConfigurationValues();
 
         Forradica::DevOut("Start new game instance");
-        Forradica::Game::Start(configuration);
+        Forradica::Game::Start();
 
         return 0;
 }

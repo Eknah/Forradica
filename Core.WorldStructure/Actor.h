@@ -11,6 +11,8 @@ namespace Forradica
 
                 int x = 0;
                 int y = 0;
+                int tickLastMove = 0;
+                int moveSpeed = 180;
         };
 
 }

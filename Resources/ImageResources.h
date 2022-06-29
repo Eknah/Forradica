@@ -11,7 +11,7 @@ namespace Forradica
 {
         namespace ImageResources
         {
-                void LoadImages(std::string imageResourcesPath, std::string imageNameExtension);
+                void LoadImages();
                 Size GetImageSize(int imageNameHash);
 
                 inline std::map<int, std::unique_ptr<SDL_Texture, SDLDeleter>> images;

@@ -3,15 +3,13 @@
 #include "Core.Drawing/Draw.h"
 #include "Convenience/Tools.h"
 #include "Convenience.Development/Development.h"
+#include "Configuration/Configuration.h"
 
 namespace Forradica
 {
 
-        void CustomCursor::Initialize(float _cursorSize)
+        void CustomCursor::Initialize()
         {
-                DevOut("Setting cursor size from configuration");
-                cursorSize = _cursorSize;
-
                 DevOut("Hiding default Windows-cursor");
                 SDL_ShowCursor(0);
         }
@@ -36,6 +34,8 @@ namespace Forradica
                         imageName = "CursorHand";
                         break;
                 }
+
+                auto cursorSize = Configuration::cursorSize;
 
                 Draw::Image(GetHash(imageName), mousePosition.x, mousePosition.y, cursorSize, 0, false);
         }
